@@ -27,7 +27,7 @@ export default function AnimePage() {
                 setLoading(true);
                 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
                 const endpoint = search
-                    ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&page=${page}&with_genres=16`
+                    ? `https://api.themoviedb.org/3/search/anime?api_key=${apiKey}&query=${search}&page=${page}&with_genres=16`
                     : `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=16&page=${page}`;
 
                 const response = await axios.get(endpoint);
