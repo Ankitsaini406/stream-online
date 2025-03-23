@@ -6,9 +6,19 @@ import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+type WatchMovie = {
+    id: number;
+    title: string;
+    overview: string;
+    backdrop_path: string;
+    release_date: string;
+    runtime: number;
+    vote_average: number;
+}
+
 export default function WatchMovie() {
     const { id } = useParams();
-    const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState<WatchMovie | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

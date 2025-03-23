@@ -10,9 +10,20 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+type Movie = {
+    id: number;
+    title: string;
+    overview: string;
+    poster_path: string;
+    release_date: string;
+    runtime: number;
+    vote_average: number;
+    genres: { id: number; name: string }[];
+}
+
 export default function MovieDetailsPage() {
     const { id } = useParams();
-    const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState<Movie | null>(null);
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
