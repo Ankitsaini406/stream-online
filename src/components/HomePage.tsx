@@ -19,7 +19,7 @@ export default function HomePage() {
                     playsInline 
                     className="absolute w-full h-full object-cover"
                 >
-                    <source src="/git add README.md" type="video/mp4" />
+                    <source src="/galaxy.mp4" type="video/mp4" />
                 </video>
             </div>
 
