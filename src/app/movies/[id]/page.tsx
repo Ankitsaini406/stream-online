@@ -97,7 +97,7 @@ export default function MovieDetailsPage() {
                         </div>
                         
                         <Link href={`/watch/${id}`}>
-                        <Button>Watch</Button>
+                        <Button className="cursor-pointer">Watch</Button>
                         </Link>
 
                         <div className="mt-4 flex gap-2">

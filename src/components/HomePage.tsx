@@ -1,11 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function HomePage() {
-    const router = useRouter();
 
     return (
         <div className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden text-white">
@@ -43,20 +42,22 @@ export default function HomePage() {
                     transition={{ duration: 0.6 }}
                 >
                     {/* Anime Button */}
+                    <Link href={"/animes"}>
                     <Button 
-                        onClick={() => router.push("/animes")}
-                        className="px-6 py-3 text-lg bg-blue-600 hover:bg-blue-700 shadow-lg transition-all"
-                    >
+                        className="px-6 py-3 text-lg bg-blue-600 hover:bg-blue-700 cursor-pointer shadow-lg transition-all"
+                        >
                         🎥 Watch Anime
                     </Button>
+                        </Link>
 
                     {/* Movie Button */}
+                    <Link href={"/movies"}>
                     <Button 
-                        onClick={() => router.push("/movies")}
-                        className="px-6 py-3 text-lg bg-green-600 hover:bg-green-700 shadow-lg transition-all"
-                    >
+                        className="px-6 py-3 text-lg bg-green-600 hover:bg-green-700 cursor-pointer shadow-lg transition-all"
+                        >
                         🎬 Watch Movies
                     </Button>
+                        </Link>
                 </motion.div>
             </div>
         </div>
