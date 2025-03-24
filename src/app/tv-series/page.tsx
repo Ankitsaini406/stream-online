@@ -26,8 +26,8 @@ export default function Tvpage() {
                 setLoading(true);
                 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
                 const endpoint = search
-                    ? `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${search}&page=${page}`
-                    : `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+                    ? `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${search}&language=en-US&page=${page}&without_genres=16`
+                    : `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=${page}&without_genres=16`;
 
                 const response = await axios.get(endpoint);
                 setTv(response.data.results);
