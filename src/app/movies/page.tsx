@@ -10,6 +10,7 @@ import CategoryButtons from "@/utils/CategoryButtons";
 interface Movie {
     id: number;
     title: string;
+    name: string;
     overview: string;
     poster_path: string;
 }
@@ -68,7 +69,7 @@ export default function MoviesPage() {
                     className="w-full max-w-md p-3 text-lg bg-gray-800 border border-gray-600 rounded-lg"
                 />
 
-                <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} />
+                <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="movie" />
 
                 <h1 className="text-4xl font-bold text-center my-6 text-yellow-400">
                     🎥 {search ? `Search Results for "${search}"` : `${category.replace("_", " ").toUpperCase()} Movies`}

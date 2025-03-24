@@ -11,6 +11,7 @@ import CategoryButtons from "@/utils/CategoryButtons";
 interface Anime {
     id: number;
     title: string;
+    name: string;
     overview: string;
     poster_path: string;
     media_type: "movie" | "tv"; // Identifies if it's a movie or series
@@ -88,7 +89,7 @@ export default function AnimePage() {
                     className="w-full max-w-md p-3 text-lg bg-gray-800 border border-gray-600 rounded-lg mb-6"
                 />
 
-                <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} />
+                <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="movie" />
 
                 {/* 🎥 Page Title with Animation */}
                 <motion.h1
