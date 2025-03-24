@@ -21,7 +21,7 @@ export default function MovieCard({ id, title, overview, poster_path, type }: Mo
                 <CardHeader className="p-0">
                     <Image
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        alt={title}
+                        alt={title || id.toString()}
                         height={500}
                         width={350}
                         className="rounded-t-lg w-full h-72 object-cover transition-transform hover:scale-110 duration-300"
