@@ -10,6 +10,7 @@ import Image from "next/image";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { createSlug } from "@/utils/UtilsConveter";
 
 interface Season {
     season_number: number;
@@ -198,6 +199,7 @@ export default function TVDetailsPage() {
                                             pathname: `/tv-series/${id}/watch`,
                                             query: {
                                                 id,
+                                                name: createSlug(tvShow.name),
                                                 season: selectedSeason,
                                                 episode_number: episode.episode_number
                                             }

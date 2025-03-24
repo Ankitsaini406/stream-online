@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { createSlug } from "@/utils/UtilsConveter";
 
 type Movie = {
     id: number;
@@ -96,7 +97,10 @@ export default function MovieDetailsPage() {
                             </p>
                         </div>
                         
-                        <Link href={`/watch/${id}`}>
+                        <Link href={{
+                            pathname: `/watch/${id}`,
+                            query: { id, type: "movies", name: createSlug(movie.title) }
+                            }}>
                         <Button className="cursor-pointer">Watch</Button>
                         </Link>
 
