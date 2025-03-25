@@ -18,7 +18,7 @@ interface MovieProps {
 
 export default function MovieCard({ id, title, name, overview, poster_path, type }: MovieProps) {
 
-    const mediaType = type === "movie" ? "movies" : "tv-series";
+    const mediaType = type === "movies" ? "movies" : "tv-series";
 
     const mediaTitle = title || name;
 
