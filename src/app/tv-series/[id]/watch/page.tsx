@@ -21,16 +21,29 @@ export default function WatchEpisode() {
     const season = searchParams.get("season");
     const episode_number = searchParams.get("episode_number");
     const [episode, setEpisode] = useState<Episode | null>(null);
+    const [isAnimation, setIsAnimation] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchEpisode = async () => {
+        const fetchEpisodeAndGenre = async () => {
             try {
                 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-                const response = await axios.get(
+
+                // Fetch episode details
+                const episodeResponse = await axios.get(
                     `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode_number}?api_key=${apiKey}&language=en-US`
                 );
-                setEpisode(response.data);
+                setEpisode(episodeResponse.data);
+
+                // Fetch TV show details to check if it's Animation
+                const tvResponse = await axios.get(
+                    `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=en-US`
+                );
+                const genres = tvResponse.data.genres || [];
+
+                // Check if it's an animation series
+                const isAnime = genres.some((genre: { id: number }) => genre.id === 16);
+                setIsAnimation(isAnime);
             } catch (error) {
                 console.error("Error fetching episode:", error);
             } finally {
@@ -38,7 +51,7 @@ export default function WatchEpisode() {
             }
         };
 
-        fetchEpisode();
+        fetchEpisodeAndGenre();
     }, [id, season, episode_number]);
 
     if (loading) {
@@ -52,6 +65,13 @@ export default function WatchEpisode() {
     if (!episode) {
         return <p className="text-center text-red-500">Episode not found</p>;
     }
+
+    // Determine the embed URL based on genre
+    const embedUrl = isAnimation
+        ? `https://vidsrc.icu/embed/anime/${id}/${episode_number}/0/1`
+        : `https://vidsrc.icu/embed/tv/${id}/${season}/${episode_number}`;
+
+        console.log(embedUrl);
 
     return (
         <div className="relative w-full min-h-screen bg-black overflow-hidden">
@@ -86,7 +106,7 @@ export default function WatchEpisode() {
                     transition={{ duration: 0.8 }}
                 >
                     <iframe 
-                        src={`https://vidsrc.icu/embed/tv/${id}/${season}/${episode_number}`} 
+                        src={embedUrl} 
                         className="w-full h-full"
                         allowFullScreen
                     />
