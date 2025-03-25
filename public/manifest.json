@@ -1,0 +1,28 @@
+{
+    "name": "Stream Online",
+    "short_name": "StreamOnline",
+    "description": "StreamOnline is your ultimate destination for movies, TV series, anime, and more. Enjoy seamless streaming with a vast collection of entertainment at your fingertips—anytime, anywhere!",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "64x64",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/favicon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "display": "standalone",
+    "orientation": "portrait"
+}
