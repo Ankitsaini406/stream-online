@@ -169,7 +169,7 @@ export default function TVDetailsPage() {
                     {loadingEpisodes ? (
                         <p className="text-center text-gray-400 mt-4">Loading episodes...</p>
                     ) : (
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
                             {episodes.map((episode) => (
                                 <motion.div key={episode.episode_number} whileHover={{ scale: 1.05 }}>
                                     <Card className="bg-gray-800 p-2 rounded-lg hover:bg-gray-700">
