@@ -10,11 +10,12 @@ import CategoryButtons from "@/utils/CategoryButtons";
 
 interface Anime {
     id: number;
-    title: string;
-    name: string;
+    title?: string;
+    name?: string;
     overview: string;
     poster_path: string;
-    media_type: "movie" | "tv"; // Identifies if it's a movie or series
+    media_type: "movie" | "tv";
+    first_air_date?: string;
 }
 
 export default function AnimePage() {
@@ -33,7 +34,6 @@ export default function AnimePage() {
                 let endpoint = "";
 
                 if (search) {
-                    // Search anime movies and TV anime separately
                     const movieSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&page=${page}&with_genres=16&with_original_language=ja`;
                     const tvSearchUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${search}&page=${page}&with_genres=16&with_original_language=ja`;
 
@@ -43,15 +43,13 @@ export default function AnimePage() {
                     ]);
 
                     setAnime([
-                        ...movieResponse.data.results.map((item: { id: number; title: string; overview: string; poster_path: string; }) => ({ ...item, media_type: "movie" })),
-                        ...tvResponse.data.results.map((item: { id: number; name: string; overview: string; poster_path: string; }) => ({ ...item, media_type: "tv" })),
+                        ...movieResponse.data.results.map((item: Anime) => ({ ...item, media_type: "movie" })),
+                        ...tvResponse.data.results.map((item: Anime) => ({ ...item, media_type: "tv", first_air_date: item.first_air_date })),
                     ]);
 
                     setTotalPages(Math.max(movieResponse.data.total_pages, tvResponse.data.total_pages));
                 } else {
-                    // Discover anime movies and TV shows
                     const categoryEndpoints: { [key: string]: string } = {
-                        // popular: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&with_genres=16&with_original_language=ja`,
                         popular: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&with_genres=16`,
                         top_rated: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&with_genres=16&sort_by=vote_average.desc`,
                         upcoming: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&with_genres=16&sort_by=release_date.desc`,
@@ -59,9 +57,13 @@ export default function AnimePage() {
                     };
 
                     endpoint = categoryEndpoints[category] || categoryEndpoints.popular;
-
                     const response = await axios.get(endpoint);
-                    setAnime(response.data.results.map((item: { id: number; title: string; overview: string; poster_path: string; }) => ({ ...item, media_type: "movie" })));
+
+                    setAnime(response.data.results.map((item: Anime) => ({
+                        ...item,
+                        media_type: item.first_air_date ? "tv" : "movie",
+                        first_air_date: item.first_air_date,
+                    })));
                     setTotalPages(response.data.total_pages);
                 }
             } catch (error) {
@@ -77,7 +79,6 @@ export default function AnimePage() {
     return (
         <div className="min-h-screen bg-gray-900 text-white p-6">
             <main className="max-w-7xl mx-auto">
-                {/* 🔎 Search Bar */}
                 <Input
                     type="text"
                     placeholder="Search for an anime..."
@@ -91,7 +92,6 @@ export default function AnimePage() {
 
                 <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="movie" />
 
-                {/* 🎥 Page Title with Animation */}
                 <motion.h1
                     className="text-4xl font-bold text-center mb-8 text-yellow-400"
                     initial={{ opacity: 0, y: -20 }}
@@ -101,20 +101,18 @@ export default function AnimePage() {
                     🎥 {search ? `Search Results for "${search}"` : "Anime Movies & Series"}
                 </motion.h1>
 
-                {/* ⏳ Loading State */}
                 {loading ? (
                     <p className="text-center text-lg">Loading...</p>
                 ) : anime.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {anime.map((item) => (
-                            <MovieCard key={item.id} {...item} type={item.media_type} />
+                            <MovieCard key={item.id} {...item} title={item.title || item.name || "Untitled"} />
                         ))}
                     </div>
                 ) : (
                     <p className="text-center text-lg">No anime found.</p>
                 )}
 
-                {/* 📌 Pagination */}
                 <PaginationControls page={page} totalPages={totalPages} onPageChange={setPage} />
             </main>
         </div>

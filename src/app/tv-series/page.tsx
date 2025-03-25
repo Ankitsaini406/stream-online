@@ -92,7 +92,7 @@ export default function Tvpage() {
                 ) : tv.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {tv.map((tv) => (
-                            <MovieCard key={tv.id} {...tv} type="tv-series" />
+                            <MovieCard key={tv.id} {...tv}/>
                         ))}
                     </div>
                 ) : (

@@ -10,16 +10,14 @@ import { createSlug } from "./UtilsConveter";
 interface MovieProps {
     id: number;
     title: string;
-    name: string;
+    name?: string;
     overview: string;
     poster_path: string;
-    type: string;
+    first_air_date?: string;
 }
 
-export default function MovieCard({ id, title, name, overview, poster_path, type }: MovieProps) {
-
-    const mediaType = type === "movies" ? "movies" : "tv-series";
-
+export default function MovieCard({ id, title, name, overview, poster_path, first_air_date }: MovieProps) {
+    const mediaType = first_air_date ? "tv-series" : "movies";
     const mediaTitle = title || name;
 
     return (
@@ -36,7 +34,7 @@ export default function MovieCard({ id, title, name, overview, poster_path, type
                 </CardHeader>
 
                 <CardContent className="p-5 flex flex-col gap-3">
-                    <CardTitle className="text-2xl font-bold text-gray-200">{title || name}</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-gray-200">{mediaTitle}</CardTitle>
                     <p className="text-sm text-gray-400 line-clamp-3">{overview}</p>
 
                     <Link href={{
@@ -44,12 +42,11 @@ export default function MovieCard({ id, title, name, overview, poster_path, type
                         query: {
                             id,
                             type: mediaType,
-                            name: createSlug(mediaTitle),
+                            name: createSlug(mediaTitle || ""),
                         }
-                    }
-                } className="mt-3">
+                    }} className="mt-3">
                         <Button className="w-full py-3 text-lg font-semibold bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 shadow-lg transition-all">
-                            🎬 Watch Now
+                            {first_air_date ? "📺 Watch Series" : "🎬 Watch Movie"}
                         </Button>
                     </Link>
                 </CardContent>
