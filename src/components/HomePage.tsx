@@ -46,12 +46,13 @@ export default function HomePage() {
             </div>
 
             {/* Card Section */}
-            <div className="relative w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-20 px-6">
-                <div className="absolute inset-0 opacity-20 blur-lg"></div>
+            <div className="relative bg-gray-800 w-full">
+                <div className="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-20 px-6">
                 <FeatureCard title="HD Streaming" description="Enjoy high-quality 1080p and 4K content with smooth playback." />
                 <FeatureCard title="No Ads" description="Stream your favorite shows and movies without interruptions." />
                 <FeatureCard title="Multi-Device Support" description="Watch on mobile, tablet, and desktop seamlessly." />
                 <FeatureCard title="Regular Updates" description="New content added every week for endless entertainment." />
+                </div>
             </div>
         </div>
     );
@@ -71,15 +72,9 @@ function NavItem({ href, label, color }: { href: string; label: string; color: s
 
 function FeatureCard({ title, description }: { title: string; description: string }) {
     return (
-        <div className="relative rounded-3xl p-[3px] overflow-hidden before:content-[''] before:absolute before:inset-0 before:-m-[5px] before:rounded-[24px] before:bg-gradient-to-r before:from-cyan-400 before:to-pink-500 before:animation-spinborder">
-            {/* Inner solid border */}
-            <div className="absolute inset-0 m-[3px] bg-[#111] rounded-3xl z-10"></div>
-
-            {/* Card Content */}
             <Card className="relative rounded-2xl h-full bg-[#111] z-20 p-6 text-center text-white">
                 <CardTitle className="text-xl font-bold mb-2">{title}</CardTitle>
                 <CardContent className="text-sm opacity-80">{description}</CardContent>
             </Card>
-        </div>
     );
 }
