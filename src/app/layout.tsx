@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/layout/Footer";
 import GoogleTagManagerHead from "@/analytics/GtmHead";
 import GoogleTagManagerBoady from "@/analytics/GtmBody";
+import GoogleAnalytics from "@/analytics/GTag";
 
 export default function RootLayout({
   children,
@@ -34,6 +35,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <title>Stream Online - Watch Movies, Anime & TV Shows</title>
         <GoogleTagManagerHead />
+        <GoogleAnalytics />
       </head>
 
       <body className="antialiased">
