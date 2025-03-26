@@ -23,7 +23,7 @@ export default function RootLayout({
         <meta property="og:title" content="StreamOnline - Watch Movies, Anime & TV Shows Online" />
         <meta property="og:description" content="Your ultimate destination for streaming movies, TV series, and anime in high quality." />
         <meta property="og:image" content="/meta-image.png" />
-        <meta property="og:url" content="https://streamonline.com" />
+        <meta property="og:url" content="https://strem-online.vercel.app/" />
         <meta property="og:type" content="website" />
 
         {/* Twitter */}
