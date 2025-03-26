@@ -4,6 +4,10 @@ import Script from "next/script";
 const GA_TRACKING_ID = "G-RPSKH6LNS3"; // Replace with your GA ID
 
 const GoogleAnalytics = () => {
+    if (process.env.NODE_ENV !== "production") {
+        return null;
+    }
+
     return (
         <>
             {/* Load gtag.js script asynchronously */}

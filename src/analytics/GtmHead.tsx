@@ -6,6 +6,10 @@ const GTM_ID = "GTM-TTW3X84W";
 
 const GoogleTagManagerHead = () => {
     useEffect(() => {
+        if (process.env.NODE_ENV !== "production") {
+            return;
+        }
+
         interface WindowWithDataLayer extends Window {
             dataLayer: Array<Record<string, string | number | boolean>>;
         }
@@ -16,6 +20,10 @@ const GoogleTagManagerHead = () => {
         }
         gtag({ event: "js", timestamp: new Date().toISOString() });
     }, []);
+
+    if (process.env.NODE_ENV !== "production") {
+        return null;
+    }
 
     return (
         <>
