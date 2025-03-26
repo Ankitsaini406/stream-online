@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Script from "next/script";
 
-const GTM_ID = "GTM-TTW3X84W";
+const GTM_ID = process.env.GTM_KEY;
 
 const GoogleTagManagerHead = () => {
     useEffect(() => {

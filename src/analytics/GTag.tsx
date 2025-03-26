@@ -1,7 +1,7 @@
 "use client";
 import Script from "next/script";
 
-const GA_TRACKING_ID = "G-RPSKH6LNS3"; // Replace with your GA ID
+const GA_TRACKING_ID = process.env.GTM_A_KEY;
 
 const GoogleAnalytics = () => {
     if (process.env.NODE_ENV !== "production") {
