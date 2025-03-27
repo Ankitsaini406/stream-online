@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { createSlug } from "./UtilsConveter";
+import { useRef } from "react";
 
 interface MovieProps {
     id: number;
@@ -17,20 +18,33 @@ interface MovieProps {
 }
 
 export default function MovieCard({ id, title, name, overview, poster_path, first_air_date }: MovieProps) {
+
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ["start end", "start center"]
+    });
+
+    const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+
     const mediaType = first_air_date ? "tv-series" : "movies";
     const mediaTitle = title || name;
 
     return (
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-            <Card className="bg-card shadow-md border border-border rounded-2xl overflow-hidden">
+        <motion.div ref={container} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <Card className="bg-card shadow-md border border-border rounded-2xl overflow-hidden pt-0">
                 <CardHeader className="p-0">
+                    <motion.div
+                    style={{scale}}
+                    >
                     <Image
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                         alt={title || id.toString()}
                         height={500}
                         width={350}
                         className="rounded-t-lg w-full h-72 object-cover transition-transform hover:scale-110 duration-300"
-                    />
+                        />
+                        </motion.div>
                 </CardHeader>
 
                 <CardContent className="p-5 flex flex-col gap-3">

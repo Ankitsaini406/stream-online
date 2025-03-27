@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function HomePage() {
+export default function HeroSection() {
     return (
         <div className="relative w-full min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden text-foreground">
             {/* Hero Section */}

@@ -38,7 +38,7 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
 
-      <body className="antialiased">
+      <body className="antialiased flex flex-col min-h-screen">
         <GoogleTagManagerBoady />
         <ChilddLayout>
           {children}

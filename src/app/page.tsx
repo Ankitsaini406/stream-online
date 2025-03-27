@@ -1,11 +1,11 @@
-import HomePage from "@/components/HomePage";
+import HeroSection from "@/components/Home/HeroSection";
+import Card from "@/components/Home/Section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
       <main>
-        <HomePage />
+        <HeroSection />
+        <Card />
         </main>
-    </div>
   );
 }
