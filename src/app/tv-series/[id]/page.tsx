@@ -80,7 +80,7 @@ export default function TVDetailsPage() {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+            <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground">
                 <Skeleton className="w-[300px] h-[450px] rounded-lg" />
                 <Skeleton className="w-[200px] h-6 mt-4" />
             </div>
@@ -93,24 +93,19 @@ export default function TVDetailsPage() {
 
     return (
         <motion.div
-            className="min-h-screen flex flex-col items-center p-6 bg-gray-900 text-white"
+            className="min-h-screen flex flex-col items-center p-6 bg-background text-foreground"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            {/* Title */}
-            <h1 className="text-5xl font-extrabold text-center mb-6 text-blue-500 drop-shadow-lg">
+            <h1 className="text-5xl font-extrabold text-center mb-6 text-primary drop-shadow-lg">
                 {tvShow.name}
             </h1>
 
             {/* Show Details */}
-            <Card className="w-full max-w-4xl bg-gray-800 shadow-lg rounded-xl overflow-hidden">
+            <Card className="w-full max-w-4xl bg-secondary shadow-lg rounded-xl overflow-hidden">
                 <CardContent className="p-6 flex flex-col md:flex-row gap-6">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6 }}
-                    >
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
                         <Image
                             src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                             alt={tvShow.name}
@@ -120,21 +115,21 @@ export default function TVDetailsPage() {
                         />
                     </motion.div>
 
-                    <div className="flex flex-col justify-between text-gray-300">
+                    <div className="flex flex-col justify-between text-foreground">
                         <p className="text-lg">{tvShow.overview}</p>
 
                         <div className="mt-4">
-                            <p className="text-md text-gray-400">
+                            <p className="text-md text-muted-foreground">
                                 📅 First Air Date: <span className="font-semibold">{tvShow.first_air_date}</span>
                             </p>
-                            <p className="text-md text-gray-400">
+                            <p className="text-md text-muted-foreground">
                                 ⭐ Rating: <span className="font-semibold">{tvShow.vote_average}</span>
                             </p>
                         </div>
 
                         <div className="mt-4 flex flex-wrap gap-2">
                             {tvShow.genres.map((genre) => (
-                                <Badge key={genre.id} className="bg-purple-600 px-3 py-1 text-sm">
+                                <Badge key={genre.id} className="bg-accent text-accent-foreground px-3 py-1 text-sm">
                                     {genre.name}
                                 </Badge>
                             ))}
@@ -145,17 +140,12 @@ export default function TVDetailsPage() {
 
             {/* Seasons Section */}
             <div className="mt-10 w-full max-w-4xl">
-                <h2 className="text-3xl font-bold text-center mb-6 text-blue-400">📺 Seasons</h2>
+                <h2 className="text-3xl font-bold text-center mb-6 text-primary">📺 Seasons</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {tvShow.seasons.map((season) => (
-                        <motion.div
-                            key={season.season_number}
-                            whileHover={{ scale: 1.05 }}
-                            className="cursor-pointer"
-                            onClick={() => fetchEpisodes(season.season_number)}
-                        >
-                            <Card className="bg-gray-800 p-2 rounded-lg transition-all hover:bg-gray-700">
-                                <p className="text-center mt-2 text-white">{season.name} ({season.episode_count} episodes)</p>
+                        <motion.div key={season.season_number} whileHover={{ scale: 1.05 }} className="cursor-pointer" onClick={() => fetchEpisodes(season.season_number)}>
+                            <Card className="bg-secondary p-2 rounded-lg transition-all hover:bg-muted">
+                                <p className="text-center mt-2">{season.name} ({season.episode_count} episodes)</p>
                             </Card>
                         </motion.div>
                     ))}
@@ -165,14 +155,14 @@ export default function TVDetailsPage() {
             {/* Episodes Section */}
             {selectedSeason !== null && (
                 <div className="mt-10 w-full max-w-4xl">
-                    <h2 className="text-2xl font-semibold text-center text-blue-400">🎬 Episodes in Season {selectedSeason}</h2>
+                    <h2 className="text-2xl font-semibold text-center text-primary">🎬 Episodes in Season {selectedSeason}</h2>
                     {loadingEpisodes ? (
-                        <p className="text-center text-gray-400 mt-4">Loading episodes...</p>
+                        <p className="text-center text-muted-foreground mt-4">Loading episodes...</p>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
                             {episodes.map((episode) => (
                                 <motion.div key={episode.episode_number} whileHover={{ scale: 1.05 }}>
-                                    <Card className="bg-gray-800 p-2 rounded-lg hover:bg-gray-700">
+                                    <Card className="bg-secondary p-2 rounded-lg hover:bg-muted">
                                         <div className="relative w-full h-36">
                                             <Image
                                                 src={episode.still_path ? `https://image.tmdb.org/t/p/w300${episode.still_path}` : "/no-image.png"}
@@ -183,16 +173,16 @@ export default function TVDetailsPage() {
                                                 className="rounded-lg"
                                             />
                                         </div>
-                                        <p className="text-center mt-2 text-white font-bold">
+                                        <p className="text-center mt-2 font-bold">
                                             Ep {episode.episode_number}: {episode.name}
                                         </p>
-                                        <p className="text-gray-400 text-sm mt-1">
+                                        <p className="text-muted-foreground text-sm mt-1">
                                             {episode.overview ? (episode.overview.split(" ").slice(0, 20).join(" ") + (episode.overview.split(" ").length > 20 ? "..." : "")) : "No overview available."}
                                         </p>
-                                        <p className="text-gray-400 text-sm mt-1">
+                                        <p className="text-muted-foreground text-sm mt-1">
                                             📅 Air Date: <span className="font-semibold">{episode.air_date || "Unknown"}</span>
                                         </p>
-                                        <p className="text-gray-400 text-sm mt-1">
+                                        <p className="text-muted-foreground text-sm mt-1">
                                             ⭐ Rating: <span className="font-semibold">{episode.vote_average || "N/A"}</span>
                                         </p>
                                         <Link href={{
@@ -204,9 +194,7 @@ export default function TVDetailsPage() {
                                                 episode_number: episode.episode_number
                                             }
                                         }}>
-                                            <Button
-                                                className="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 px-3 rounded-lg w-full transition-all"
-                                            >
+                                            <Button className="mt-3 bg-primary hover:bg-primary-dark text-primary-foreground font-semibold py-1 px-3 rounded-lg w-full transition-all">
                                                 View Episode
                                             </Button>
                                         </Link>

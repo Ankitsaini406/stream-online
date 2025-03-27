@@ -68,7 +68,7 @@ export default function Tvpage() {
     }, [search, page, category]);
     
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-6">
+        <div className="min-h-screen bg-background text-foreground p-6">
             <main className="max-w-7xl mx-auto">
                 <Input
                     type="text"
@@ -78,7 +78,7 @@ export default function Tvpage() {
                         setSearch(e.target.value);
                         setPage(1);
                     }}
-                    className="w-full max-w-md p-3 text-lg bg-gray-800 border border-gray-600 rounded-lg"
+                    className="w-full max-w-md p-3 text-lg border border-border bg-card text-primary rounded-lg"
                 />
 
                 <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="tv" />

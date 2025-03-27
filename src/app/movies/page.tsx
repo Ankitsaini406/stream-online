@@ -56,8 +56,9 @@ export default function MoviesPage() {
     }, [search, page, category]);
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-6">
+        <div className="min-h-screen bg-background text-foreground p-6">
             <main className="max-w-7xl mx-auto">
+                {/* Search Input */}
                 <Input
                     type="text"
                     placeholder="Search for a movie..."
@@ -66,28 +67,43 @@ export default function MoviesPage() {
                         setSearch(e.target.value);
                         setPage(1);
                     }}
-                    className="w-full max-w-md p-3 text-lg bg-gray-800 border border-gray-600 rounded-lg"
+                    className="w-full max-w-md p-3 text-lg border border-border bg-card text-primary rounded-lg"
                 />
 
-                <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="movie" />
+                {/* Category Selection */}
+                <CategoryButtons 
+                    selectedCategory={category} 
+                    onSelectCategory={setCategory} 
+                    type="movie" 
+                />
 
-                <h1 className="text-4xl font-bold text-center my-6 text-yellow-400">
+                {/* Title */}
+                <h1 className="text-4xl font-bold text-center my-6 text-primary">
                     🎥 {search ? `Search Results for "${search}"` : `${category.replace("_", " ").toUpperCase()} Movies`}
                 </h1>
 
+                {/* Movie List */}
                 {loading ? (
                     <p className="text-center text-lg">Loading...</p>
                 ) : movies.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {movies.map((movie) => (
-                            <MovieCard key={movie.id} {...movie} />
+                            <MovieCard 
+                                key={movie.id} 
+                                {...movie} 
+                            />
                         ))}
                     </div>
                 ) : (
                     <p className="text-center text-lg">No movies found.</p>
                 )}
 
-                <PaginationControls page={page} totalPages={totalPages} onPageChange={setPage} />
+                {/* Pagination */}
+                <PaginationControls 
+                    page={page} 
+                    totalPages={totalPages} 
+                    onPageChange={setPage} 
+                />
             </main>
         </div>
     );

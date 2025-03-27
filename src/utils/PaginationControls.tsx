@@ -1,6 +1,12 @@
 "use client";
 
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext } from "@/components/ui/pagination";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationItem,
+    PaginationPrevious,
+    PaginationNext,
+} from "@/components/ui/pagination";
 
 interface PaginationProps {
     page: number;
@@ -12,20 +18,32 @@ export default function PaginationControls({ page, totalPages, onPageChange }: P
     return (
         <div className="mt-10 flex justify-center">
             <Pagination>
-                <PaginationContent>
+                <PaginationContent className="flex gap-4">
                     <PaginationItem>
                         <PaginationPrevious
-                            onClick={() => onPageChange(page - 1)}
-                            className={page === 1 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
+                            onClick={() => page > 1 && onPageChange(page - 1)}
+                            className={`px-4 py-2 rounded-lg transition-all ${
+                                page === 1
+                                    ? "bg-secondary text-secondary-foreground opacity-50 cursor-not-allowed"
+                                    : "bg-primary text-primary-foreground hover:bg-accent cursor-pointer"
+                            }`}
                         />
                     </PaginationItem>
+
                     <PaginationItem>
-                        <span className="px-4 py-2 text-lg font-semibold">Page {page} of {totalPages}</span>
+                        <span className="px-4 py-2 text-lg font-semibold text-foreground">
+                            Page {page} of {totalPages}
+                        </span>
                     </PaginationItem>
+
                     <PaginationItem>
                         <PaginationNext
-                            onClick={() => onPageChange(page + 1)}
-                            className={page === totalPages ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
+                            onClick={() => page < totalPages && onPageChange(page + 1)}
+                            className={`px-4 py-2 rounded-lg transition-all ${
+                                page === totalPages
+                                    ? "bg-secondary text-secondary-foreground opacity-50 cursor-not-allowed"
+                                    : "bg-primary text-primary-foreground hover:bg-accent cursor-pointer"
+                            }`}
                         />
                     </PaginationItem>
                 </PaginationContent>
