@@ -45,45 +45,45 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f8f8f8; /* Off White Background */
-  --foreground: #222; /* Darker Grey for Text */
-  --card: #f8f8f8;
-  --card-foreground: #222;
-  --popover: #f8f8f8;
-  --popover-foreground: #222;
-  --primary: #222; /* Dark Grey for Primary Elements */
-  --primary-foreground: #f8f8f8;
-  --secondary: #e0e0e0; /* Soft Grey for Secondary */
-  --secondary-foreground: #222;
-  --muted: #eaeaea;
-  --muted-foreground: #444;
-  --accent: #333; /* Slightly Darker Accent */
-  --accent-foreground: #f8f8f8;
-  --border: #ccc;
+  --background: #0D0D0D; /* Deep Black - Cinematic Background */
+  --foreground: #EAEAEA; /* Soft White - Easy Readability */
+  --card: #1C1C1C; /* Dark Grey - Slight Contrast */
+  --card-foreground: #EAEAEA;
+  --popover: #1C1C1C;
+  --popover-foreground: #EAEAEA;
+  --primary: #E50914; /* Netflix Red - Strong CTA */
+  --primary-foreground: #0D0D0D;
+  --secondary: #FF4500; /* Vibrant Orange - Highlights */
+  --secondary-foreground: #0D0D0D;
+  --muted: #181818; /* Muted Dark Grey */
+  --muted-foreground: #B3B3B3;
+  --accent: #FF5722; /* Fiery Orange for Dynamic UI */
+  --accent-foreground: #0D0D0D;
+  --border: #333; /* Subtle Border Contrast */
   --input: #222;
-  --ring: #444;
+  --ring: #EAEAEA; /* Off-White for Focus Elements */
 }
 
 /* Dark Mode */
 .dark {
   --radius: 0.625rem;
-  --background: #111; /* Darker Black */
-  --foreground: #f8f8f8; /* Off-White for better readability */
+  --background: #111; /* Even Darker Black for Dark Mode */
+  --foreground: #f8f8f8; /* Soft White */
   --card: #181818; /* Slightly lighter black for depth */
   --card-foreground: #f8f8f8;
   --popover: #181818;
   --popover-foreground: #f8f8f8;
-  --primary: #f8f8f8;
+  --primary: #E50914; /* Keeping Netflix Red */
   --primary-foreground: #111;
-  --secondary: #222; /* Dark Grey for subtle contrast */
-  --secondary-foreground: #f8f8f8;
+  --secondary: #FF4500; /* Vibrant Orange */
+  --secondary-foreground: #111;
   --muted: #1a1a1a; /* Muted Darker Grey */
   --muted-foreground: #ccc;
-  --accent: #f8f8f8; /* Off-White for accents */
+  --accent: #FFD600; /* Bright Yellow for Exciting UI */
   --accent-foreground: #111;
-  --border: #444; /* Subtle border contrast */
+  --border: #444;
   --input: #333;
-  --ring: #f8f8f8; /* Keeping ring as off-white */
+  --ring: #f8f8f8;
 }
 
 @layer base {
