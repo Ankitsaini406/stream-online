@@ -1,9 +1,9 @@
-import Header from "@/layout/Header";
+
 import "./globals.css";
-import Footer from "@/layout/Footer";
 import GoogleTagManagerHead from "@/analytics/GtmHead";
 import GoogleTagManagerBoady from "@/analytics/GtmBody";
 import GoogleAnalytics from "@/analytics/GTag";
+import ChilddLayout from "./childlayout";
 
 export default function RootLayout({
   children,
@@ -18,7 +18,7 @@ export default function RootLayout({
         <meta name="description" content="StreamOnline – Watch movies, TV series, anime, and more online. Enjoy seamless streaming anytime, anywhere!" />
         <meta name="keywords" content="movies, tv shows, anime, streaming, watch online, free movies, latest series" />
         <meta name="author" content="StreamOnline" />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="StreamOnline - Watch Movies, Anime & TV Shows Online" />
         <meta property="og:description" content="Your ultimate destination for streaming movies, TV series, and anime in high quality." />
@@ -40,9 +40,9 @@ export default function RootLayout({
 
       <body className="antialiased">
         <GoogleTagManagerBoady />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ChilddLayout>
+          {children}
+        </ChilddLayout>
       </body>
     </html>
   );
