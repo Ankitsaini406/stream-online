@@ -20,7 +20,7 @@ export default function Header() {
     return (
         <>
             <motion.div
-                className="fixed w-full top-0 z-50 flex flex-col items-center border-b border-primary"
+                className="fixed w-full top-0 z-50 flex flex-col items-center"
                 initial={false}
                 animate={{ y: headerOpen ? 0 : -100 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -28,7 +28,7 @@ export default function Header() {
                 <AnimatePresence>
                     {headerOpen && (
                         <motion.header
-                            className="w-full z-50 bg-gradient-to-b from-background/90 to-background/70 backdrop-blur-lg shadow-lg relative"
+                            className="w-full z-50 bg-gradient-to-b from-background/90 to-background/70 backdrop-blur-lg shadow-lg relative border-b border-primary"
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -100, opacity: 0 }}
