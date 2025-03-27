@@ -20,7 +20,7 @@ type Movie = {
     runtime: number;
     vote_average: number;
     genres: { id: number; name: string }[];
-}
+};
 
 export default function MovieDetailsPage() {
     const { id } = useParams();
@@ -46,27 +46,27 @@ export default function MovieDetailsPage() {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen">
-                <Skeleton className="w-[300px] h-[450px] rounded-lg" />
-                <Skeleton className="w-[200px] h-6 mt-4" />
+            <div className="flex flex-col items-center justify-center min-h-screen bg-[var(--background)]">
+                <Skeleton className="w-[300px] h-[450px] rounded-lg bg-[var(--muted)]" />
+                <Skeleton className="w-[200px] h-6 mt-4 bg-[var(--muted)]" />
             </div>
         );
     }
 
     if (!movie) {
-        return <p className="text-center text-red-500">Movie not found</p>;
+        return <p className="text-center text-[var(--primary)]">Movie not found</p>;
     }
 
     return (
         <motion.div 
-            className="min-h-screen flex flex-col items-center p-6 bg-gray-900 text-white"
+            className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] text-[var(--foreground)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <h1 className="text-4xl font-bold text-center mb-6">{movie.title}</h1>
+            <h1 className="text-4xl font-bold text-center mb-6 text-[var(--primary)]">{movie.title}</h1>
             
-            <Card className="w-full max-w-4xl bg-gray-800 shadow-lg overflow-hidden">
+            <Card className="w-full max-w-4xl bg-[var(--card)] shadow-lg overflow-hidden">
                 <CardContent className="p-4 flex flex-col md:flex-row gap-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -83,16 +83,16 @@ export default function MovieDetailsPage() {
                     </motion.div>
 
                     <div className="flex flex-col justify-between">
-                        <p className="text-lg text-gray-300">{movie.overview}</p>
+                        <p className="text-lg text-[var(--muted-foreground)]">{movie.overview}</p>
 
                         <div className="mt-4">
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-[var(--muted-foreground)]">
                                 Release Date: <span className="font-semibold">{movie.release_date}</span>
                             </p>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-[var(--muted-foreground)]">
                                 Runtime: <span className="font-semibold">{movie.runtime} mins</span>
                             </p>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-[var(--muted-foreground)]">
                                 Rating: <span className="font-semibold">{movie.vote_average} ⭐</span>
                             </p>
                         </div>
@@ -101,12 +101,14 @@ export default function MovieDetailsPage() {
                             pathname: `/watch/${id}`,
                             query: { id, type: "movies", name: createSlug(movie.title) }
                             }}>
-                        <Button className="cursor-pointer">Watch</Button>
+                        <Button className="cursor-pointer bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--accent)]">
+                            Watch
+                        </Button>
                         </Link>
 
                         <div className="mt-4 flex gap-2">
                             {movie.genres.map((genre) => (
-                                <Badge key={genre.id} className="bg-blue-600">{genre.name}</Badge>
+                                <Badge key={genre.id} className="bg-[var(--secondary)] text-[var(--secondary-foreground)]">{genre.name}</Badge>
                             ))}
                         </div>
                     </div>

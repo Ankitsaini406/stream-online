@@ -63,6 +63,7 @@
   --input: #222;
   --ring: #444;
 }
+
 /* Dark Mode */
 .dark {
   --radius: 0.625rem;
