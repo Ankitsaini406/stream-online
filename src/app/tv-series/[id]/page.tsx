@@ -93,7 +93,7 @@ export default function TVDetailsPage() {
 
     return (
         <motion.div
-            className="min-h-screen flex flex-col items-center p-6 bg-background text-foreground"
+            className="min-h-screen flex flex-col items-center p-6 bg-background text-foreground pt-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

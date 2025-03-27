@@ -89,7 +89,7 @@ export default function WatchEpisode() {
             </div>
 
             {/* Overlay Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4">
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 pt-20">
                 <motion.h1 
                     className="text-4xl md:text-5xl font-bold text-center mb-6 drop-shadow-lg"
                     initial={{ opacity: 0, y: -20 }}

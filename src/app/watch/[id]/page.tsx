@@ -14,7 +14,7 @@ type WatchMovie = {
     release_date: string;
     runtime: number;
     vote_average: number;
-}
+};
 
 export default function WatchMovie() {
     const { id } = useParams();
@@ -39,33 +39,32 @@ export default function WatchMovie() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-black">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-white"></div>
+            <div className="flex items-center justify-center min-h-screen bg-[var(--background)]">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-[var(--primary)]"></div>
             </div>
         );
     }
 
     if (!movie) {
-        return <p className="text-center text-red-500">Movie not found</p>;
+        return <p className="text-center text-[var(--primary)]">Movie not found</p>;
     }
 
     return (
-        <div className="relative w-full min-h-screen bg-black overflow-hidden">
-            {/* Blurred Background Image */}
-            <div className="absolute inset-0 w-full h-full bg-black">
+        <div className="relative w-full min-h-screen bg-[var(--background)] overflow-hidden">
+            {/* 🎥 Blurred Background */}
+            <div className="absolute inset-0 w-full h-full bg-[var(--background)]">
                 <Image 
                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} 
                     alt={movie.title} 
-                    layout="fill"
-                    objectFit="cover"
-                    className="opacity-30"
+                    fill
+                    className="object-cover brightness-50 blur-md"
                 />
             </div>
 
-            {/* Overlay Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4">
+            {/* 🎬 Content Overlay */}
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-[var(--foreground)] px-4 pt-20">
                 <motion.h1 
-                    className="text-4xl md:text-5xl font-bold text-center mb-6 drop-shadow-lg"
+                    className="text-4xl md:text-5xl font-extrabold text-center mb-6 drop-shadow-lg text-[var(--primary)]"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -73,9 +72,9 @@ export default function WatchMovie() {
                     {movie.title}
                 </motion.h1>
 
-                {/* Video Player */}
+                {/* 🎥 Video Player */}
                 <motion.div 
-                    className="w-full max-w-6xl h-[70vh] md:h-[80vh] rounded-lg overflow-hidden shadow-lg"
+                    className="w-full max-w-6xl h-[70vh] md:h-[80vh] rounded-lg overflow-hidden shadow-lg border-2 border-[var(--border)]"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
@@ -87,20 +86,32 @@ export default function WatchMovie() {
                     />
                 </motion.div>
 
-                {/* Movie Details */}
+                {/* 📜 Movie Details */}
                 <motion.div 
                     className="mt-8 max-w-4xl text-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <p className="text-lg text-gray-300 mb-4">{movie.overview}</p>
-                    <p className="text-sm text-gray-400">
-                        Release Date: <span className="text-white">{movie.release_date}</span> | 
-                        Runtime: <span className="text-white">{movie.runtime} mins</span> | 
-                        Rating: <span className="text-yellow-500">{movie.vote_average}⭐</span>
+                    <p className="text-lg text-[var(--muted-foreground)] mb-4">{movie.overview}</p>
+                    <p className="text-sm text-[var(--muted-foreground)]">
+                        Release Date: <span className="text-[var(--foreground)]">{movie.release_date}</span> | 
+                        Runtime: <span className="text-[var(--foreground)]">{movie.runtime} mins</span> | 
+                        Rating: <span className="text-[var(--accent)] font-bold">{movie.vote_average}⭐</span>
                     </p>
                 </motion.div>
+
+                {/* 🔥 Watch Now Button */}
+                <motion.a 
+                    href={`https://vidsrc.icu/embed/movie/${id}`} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 px-6 py-3 text-lg font-semibold rounded-md bg-[var(--primary)] hover:bg-[var(--accent)] transition-all shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    Watch in Fullscreen
+                </motion.a>
             </div>
         </div>
     );

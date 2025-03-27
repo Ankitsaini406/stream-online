@@ -10,14 +10,12 @@ export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <header className="w-full sticky top-0 left-0 z-50">
+        <header className="w-full fixed top-0 left-0 z-50">
             <motion.div 
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex items-center justify-between py-4 px-6 
-                bg-gradient-to-r from-[#0D0D0D] via-[#1C1C1C] to-[#0D0D0D] 
-                backdrop-blur-2xl shadow-lg border-b border-border"
+                className="flex items-center justify-between py-4 px-6"
             >
                 {/* Logo */}
                 <Link href="/">

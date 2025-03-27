@@ -77,7 +77,7 @@ export default function AnimePage() {
     }, [search, page, category]);
 
     return (
-        <div className="min-h-screen bg-background text-foreground p-6">
+        <div className="min-h-screen bg-background text-foreground p-6 pt-20">
             <main className="max-w-7xl mx-auto">
                 <Input
                     type="text"
