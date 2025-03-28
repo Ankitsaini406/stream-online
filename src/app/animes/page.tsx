@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import MovieCard from "@/utils/MovieCard";
 import PaginationControls from "@/utils/PaginationControls";
 import { Input } from "@/components/ui/input";
@@ -92,14 +91,11 @@ export default function AnimePage() {
 
                 <CategoryButtons selectedCategory={category} onSelectCategory={setCategory} type="movie" />
 
-                <motion.h1
+                <h1
                     className="text-4xl font-bold text-center mb-8 text-yellow-400"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
                 >
                     🎥 {search ? `Search Results for "${search}"` : "Anime Movies & Series"}
-                </motion.h1>
+                </h1>
 
                 {loading ? (
                     <p className="text-center text-lg">Loading...</p>

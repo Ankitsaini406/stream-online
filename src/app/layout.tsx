@@ -1,6 +1,6 @@
 
 import "./globals.css";
-import { Josefin_Sans, Open_Sans  } from "next/font/google";
+import { Josefin_Sans, Open_Sans } from "next/font/google";
 import GoogleTagManagerHead from "@/analytics/GtmHead";
 import GoogleTagManagerBoady from "@/analytics/GtmBody";
 import GoogleAnalytics from "@/analytics/GTag";
@@ -45,7 +45,7 @@ export default function RootLayout({
       <body className={`flex flex-col min-h-screen ${josefin.className} ${openSans.className}`}>
         <GoogleTagManagerBoady />
         <ChilddLayout>
-          {children}
+            {children}
         </ChilddLayout>
       </body>
     </html>

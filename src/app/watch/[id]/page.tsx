@@ -63,35 +63,26 @@ export default function WatchMovie() {
 
             {/* 🎬 Content Overlay */}
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-[var(--foreground)] px-4 pt-20">
-                <motion.h1 
+                <h1 
                     className="text-4xl md:text-5xl font-extrabold text-center mb-6 drop-shadow-lg text-[var(--primary)]"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                 >
                     {movie.title}
-                </motion.h1>
+                </h1>
 
                 {/* 🎥 Video Player */}
-                <motion.div 
+                <div 
                     className="w-full max-w-6xl h-[70vh] md:h-[80vh] rounded-lg overflow-hidden shadow-lg border-2 border-[var(--border)]"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
                 >
                     <iframe 
                         src={`https://vidsrc.icu/embed/movie/${id}`} 
                         className="w-full h-full"
                         allowFullScreen
                     />
-                </motion.div>
+                </div>
 
                 {/* 📜 Movie Details */}
-                <motion.div 
+                <div 
                     className="mt-8 max-w-4xl text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                 >
                     <p className="text-lg text-[var(--muted-foreground)] mb-4">{movie.overview}</p>
                     <p className="text-sm text-[var(--muted-foreground)]">
@@ -99,7 +90,7 @@ export default function WatchMovie() {
                         Runtime: <span className="text-[var(--foreground)]">{movie.runtime} mins</span> | 
                         Rating: <span className="text-[var(--accent)] font-bold">{movie.vote_average}⭐</span>
                     </p>
-                </motion.div>
+                </div>
 
                 {/* 🔥 Watch Now Button */}
                 <motion.a 

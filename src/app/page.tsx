@@ -3,9 +3,9 @@ import Card from "@/components/Home/Section";
 
 export default function Home() {
   return (
-      <main>
-        <HeroSection />
-        <Card />
-        </main>
+    <main>
+      <HeroSection />
+      <Card />
+    </main>
   );
 }

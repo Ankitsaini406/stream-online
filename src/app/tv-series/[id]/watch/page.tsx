@@ -3,7 +3,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 type Episode = {
@@ -90,41 +89,32 @@ export default function WatchEpisode() {
 
             {/* Overlay Content */}
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 pt-20">
-                <motion.h1 
+                <h1 
                     className="text-4xl md:text-5xl font-bold text-center mb-6 drop-shadow-lg"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                 >
                     {episode.name}
-                </motion.h1>
+                </h1>
 
-                <motion.div 
+                <div 
                     className="w-full max-w-6xl h-[70vh] md:h-[80vh] rounded-lg overflow-hidden shadow-lg"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
                 >
                     <iframe 
                         src={embedUrl} 
                         className="w-full h-full"
                         allowFullScreen
                     />
-                </motion.div>
+                </div>
 
                 {/* Episode Details */}
-                <motion.div 
+                <div 
                     className="mt-8 max-w-4xl text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                 >
                     <p className="text-lg text-gray-300 mb-4">{episode.overview || "No description available."}</p>
                     <p className="text-sm text-gray-400">
                         📅 Air Date: <span className="text-white">{episode.air_date || "Unknown"}</span> |
                         ⭐ Rating: <span className="text-yellow-500">{episode.vote_average || "N/A"}</span>
                     </p>
-                </motion.div>
+                </div>
             </div>
         </div>
     );

@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { createSlug } from "@/utils/UtilsConveter";
 
@@ -58,20 +57,14 @@ export default function MovieDetailsPage() {
     }
 
     return (
-        <motion.div 
+        <div 
             className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] text-[var(--foreground)] pt-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
         >
             <h1 className="text-4xl font-bold text-center mb-6 text-[var(--primary)]">{movie.title}</h1>
             
             <Card className="w-full max-w-4xl bg-[var(--card)] shadow-lg overflow-hidden">
                 <CardContent className="p-4 flex flex-col md:flex-row gap-6">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6 }}
+                    <div
                     >
                         <Image 
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
@@ -80,7 +73,7 @@ export default function MovieDetailsPage() {
                             height={450} 
                             className="rounded-lg shadow-lg"
                         />
-                    </motion.div>
+                    </div>
 
                     <div className="flex flex-col justify-between">
                         <p className="text-lg text-[var(--muted-foreground)]">{movie.overview}</p>
@@ -114,6 +107,6 @@ export default function MovieDetailsPage() {
                     </div>
                 </CardContent>
             </Card>
-        </motion.div>
+        </div>
     );
 }

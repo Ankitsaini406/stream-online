@@ -92,11 +92,8 @@ export default function TVDetailsPage() {
     }
 
     return (
-        <motion.div
+        <div
             className="min-h-screen flex flex-col items-center p-6 bg-background text-foreground pt-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
         >
             <h1 className="text-5xl font-extrabold text-center mb-6 text-primary drop-shadow-lg">
                 {tvShow.name}
@@ -105,7 +102,7 @@ export default function TVDetailsPage() {
             {/* Show Details */}
             <Card className="w-full max-w-4xl bg-secondary shadow-lg rounded-xl overflow-hidden">
                 <CardContent className="p-6 flex flex-col md:flex-row gap-6">
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+                    <div >
                         <Image
                             src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                             alt={tvShow.name}
@@ -113,7 +110,7 @@ export default function TVDetailsPage() {
                             height={500}
                             className="rounded-lg shadow-2xl"
                         />
-                    </motion.div>
+                    </div>
 
                     <div className="flex flex-col justify-between text-foreground">
                         <p className="text-lg">{tvShow.overview}</p>
@@ -205,6 +202,6 @@ export default function TVDetailsPage() {
                     )}
                 </div>
             )}
-        </motion.div>
+        </div>
     );
 }
