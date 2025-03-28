@@ -28,15 +28,15 @@ export default function Card() {
                 {/* Movies Section */}
                 <motion.section
                     style={{ scale: scale1, rotate: rotate1 }}
-                    className="sticky top-0 h-screen bg-primary text-[3.5vw] flex flex-col items-center justify-center text-white pb-[10vw]"
+                    className="sticky top-0 h-screen bg-primary text-[4vh] md:text-[3.5vw] flex flex-col items-center justify-center text-white pb-[10vw]"
                 >
                     <p className="font-bold tracking-wide">🎬 Movies</p>
                     <motion.div
-                        initial={{ width: 100 }}
-                        whileHover={{ width: 180 }}
+                        initial={{ width: 50 }}
+                        whileHover={{ width: 200 }}
                     >
                         <Link href="/movies" className="flex gap-4 items-center hover:underline underline-offset-8 transition">
-                            <span>Discover</span>
+                            <span>Watch</span>
                             <ArrowRightIcon size={50} />
                         </Link>
                     </motion.div>
@@ -45,12 +45,12 @@ export default function Card() {
                 {/* Anime Section */}
                 <motion.section
                     style={{ scale: scale2, rotate: rotate2 }}
-                    className="sticky top-0 h-screen bg-primary-foreground text-[3.5vw] flex flex-col items-center justify-center text-white"
+                    className="sticky top-0 h-screen bg-primary-foreground text-[4vh] md:text-[3.5vw] flex flex-col items-center justify-center text-white"
                 >
                     <p className="font-bold tracking-wide">🎥 Anime</p>
                     <motion.div
-                        initial={{ width: 100 }}
-                        whileHover={{ width: 180 }}
+                        initial={{ width: 50 }}
+                        whileHover={{ width: 200 }}
                     >
                         <Link href="/animes" className="flex gap-4 items-center hover:underline underline-offset-8 transition">
                             <span>Watch</span>
@@ -65,15 +65,15 @@ export default function Card() {
                 initial={{ scale: 0, translateY: -150 }}
                 whileInView={{ scale: 1, translateY: 0 }}
                 transition={{ duration: 1 }}
-                className="sticky top-0 h-screen bg-accent text-[3.5vw] flex flex-col items-center justify-center text-white pb-[10vw]"
+                className="sticky top-0 h-screen bg-accent text-[4vh] md:text-[3.5vw] flex flex-col items-center justify-center text-white pb-[10vw]"
             >
                 <p className="font-bold tracking-wide">📺 TV Series</p>
                 <motion.div
-                    initial={{ width: 100 }}
-                    whileHover={{ width: 180 }}
+                        initial={{ width: 50 }}
+                        whileHover={{ width: 200 }}
                 >
                     <Link href="/tv-series" className="flex gap-4 items-center hover:underline underline-offset-8 transition">
-                        <span>Explore</span>
+                        <span>Watch</span>
                         <ArrowRightIcon size={50} />
                     </Link>
                 </motion.div>

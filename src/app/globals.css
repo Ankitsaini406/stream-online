@@ -43,10 +43,18 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+::selection {
+  background: #e3e4ed;
+  text-shadow: none;
+  color: #000;
+}
+
 :root {
   --radius: 0.625rem;
-  --background: #0D0D0D; /* Deep Black - Cinematic Background */
-  --foreground: #EAEAEA; /* Soft White - Easy Readability */
+  --background: black; /* Deep Black - Cinematic Background */
+  --base-color--white: white;
+  --foreground: #f4f4f7; /* Soft White - Easy Readability */
+  --text-color: #f4f4f7; /* Soft White - Easy Readability */
   --card: #1C1C1C; /* Dark Grey - Slight Contrast */
   --card-foreground: #EAEAEA;
   --popover: #1C1C1C;

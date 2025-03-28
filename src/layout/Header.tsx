@@ -34,11 +34,11 @@ export default function Header() {
                             exit={{ y: -100, opacity: 0 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                         >
-                            <div className="flex items-center justify-between px-6 py-4">
+                            <div className="flex items-center justify-between px-4 md:px-6 py-4">
                                 {/* Logo */}
                                 <Link href="/">
                                     <motion.h1
-                                        className="text-3xl font-extrabold text-primary tracking-wide cursor-pointer"
+                                        className="text-2xl md:text-3xl font-extrabold text-primary tracking-wide cursor-pointer"
                                         whileHover={{ scale: 1.1 }}
                                     >
                                         Stream<span className="text-secondary">Online</span>
@@ -46,12 +46,12 @@ export default function Header() {
                                 </Link>
 
                                 {/* Desktop Navigation */}
-                                <nav className="hidden md:flex gap-8 text-foreground font-medium">
+                                <nav className="hidden md:flex gap-6 lg:gap-8 text-foreground font-medium">
                                     {menuItems.map((item, index) => (
                                         <Link
                                             key={index}
                                             href={`/${item.name.toLowerCase().replace(" ", "-")}`}
-                                            className="hover:text-secondary transition-all duration-300 ease-in-out"
+                                            className="hover:text-secondary transition-all duration-300 ease-in-out text-sm lg:text-base"
                                         >
                                             {item.name}
                                         </Link>
@@ -60,14 +60,14 @@ export default function Header() {
 
                                 {/* Actions (Login + Mobile Menu Toggle) */}
                                 <div className="flex items-center gap-4">
-                                    <Button className="hidden md:block bg-primary hover:bg-accent text-background px-6 py-2 transition-all shadow-md rounded-lg">
+                                    <Button className="hidden md:block bg-primary hover:bg-accent text-background px-4 lg:px-6 py-2 transition-all shadow-md rounded-lg text-sm lg:text-base">
                                         Login
                                     </Button>
                                     <button
                                         className="md:hidden text-foreground p-2 focus:outline-none"
                                         onClick={() => setMenuOpen(!menuOpen)}
                                     >
-                                        {menuOpen ? <X size={28} className="text-secondary" /> : <MenuIcon size={28} />}
+                                        {menuOpen ? <X size={26} className="text-secondary" /> : <MenuIcon size={26} />}
                                     </button>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@ export default function Header() {
                             <AnimatePresence>
                                 {menuOpen && (
                                     <motion.nav
-                                        className="md:hidden bg-background/90 backdrop-blur-md text-foreground text-center flex flex-col gap-4 py-6 shadow-lg rounded-lg border border-border"
+                                        className="md:hidden bg-gradient-to-b from-background/90 to-background backdrop-blur-lg text-center flex flex-col gap-4 py-6 shadow-lg absolute top-full left-0 w-full"
                                         initial={{ opacity: 0, y: -20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -20 }}
@@ -86,13 +86,13 @@ export default function Header() {
                                             <Link
                                                 key={index}
                                                 href={`/${item.name.toLowerCase().replace(" ", "-")}`}
-                                                className="hover:text-primary transition-all text-lg"
+                                                className="hover:text-primary transition-all text-lg py-2"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {item.name}
                                             </Link>
                                         ))}
-                                        <Button className="bg-primary hover:bg-accent text-background px-6 py-2 transition-all w-fit mx-auto shadow-md rounded-lg">
+                                        <Button className="bg-primary hover:bg-accent text-background px-6 py-2 transition-all w-fit mx-auto shadow-md rounded-lg text-base">
                                             Login
                                         </Button>
                                     </motion.nav>
@@ -105,13 +105,13 @@ export default function Header() {
 
             {/* Toggle Button for Header */}
             <motion.div
-                className="hidden md:block fixed top-0 left-1/2 transform -translate-x-1/2 z-50"
+                className="fixed top-0 left-1/2 transform -translate-x-1/2 z-20"
                 initial={{ y: -50 }}
                 animate={{ y: headerOpen ? 68 : 0 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
             >
                 <Button
-                    className="bg-primary hover:bg-accent text-background px-6 py-2 transition-all shadow-md rounded-t-none rounded-b-lg hover:text-foreground"
+                    className="bg-primary hover:bg-accent text-background px-4 py-2 md:px-6 md:py-2 transition-all shadow-md rounded-t-none rounded-b-lg text-sm md:text-base"
                     onClick={() => setHeaderOpen(!headerOpen)}
                 >
                     <MenuIcon className="hover:text-foreground" size={20} />
