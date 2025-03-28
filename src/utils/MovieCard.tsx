@@ -32,7 +32,7 @@ export default function MovieCard({ id, title, name, overview, poster_path, firs
 
     return (
         <motion.div ref={container} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-            <Card className="bg-card shadow-md border border-border rounded-2xl overflow-hidden pt-0">
+            <Card className="bg-card shadow-md border border-border rounded-2xl overflow-hidden pt-0 h-full justify-between">
                 <CardHeader className="p-0">
                     <motion.div
                     style={{scale}}

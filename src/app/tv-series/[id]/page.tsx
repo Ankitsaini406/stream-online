@@ -100,7 +100,7 @@ export default function TVDetailsPage() {
             </h1>
 
             {/* Show Details */}
-            <Card className="w-full max-w-4xl bg-secondary shadow-lg rounded-xl overflow-hidden">
+            <Card className="w-full max-w-4xl shadow-lg rounded-xl overflow-hidden">
                 <CardContent className="p-6 flex flex-col md:flex-row gap-6">
                     <div >
                         <Image
@@ -141,7 +141,7 @@ export default function TVDetailsPage() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {tvShow.seasons.map((season) => (
                         <motion.div key={season.season_number} whileHover={{ scale: 1.05 }} className="cursor-pointer" onClick={() => fetchEpisodes(season.season_number)}>
-                            <Card className="bg-secondary p-2 rounded-lg transition-all hover:bg-muted">
+                            <Card className="p-2 rounded-lg transition-all hover:bg-muted">
                                 <p className="text-center mt-2">{season.name} ({season.episode_count} episodes)</p>
                             </Card>
                         </motion.div>
@@ -156,10 +156,10 @@ export default function TVDetailsPage() {
                     {loadingEpisodes ? (
                         <p className="text-center text-muted-foreground mt-4">Loading episodes...</p>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-6 mt-4">
                             {episodes.map((episode) => (
                                 <motion.div key={episode.episode_number} whileHover={{ scale: 1.05 }}>
-                                    <Card className="bg-secondary p-2 rounded-lg hover:bg-muted">
+                                    <Card className="p-2 rounded-lg hover:bg-muted pt-0 h-full justify-evenly">
                                         <div className="relative w-full h-36">
                                             <Image
                                                 src={episode.still_path ? `https://image.tmdb.org/t/p/w300${episode.still_path}` : "/no-image.png"}
