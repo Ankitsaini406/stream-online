@@ -1,9 +1,13 @@
 
 import "./globals.css";
+import { Josefin_Sans, Open_Sans  } from "next/font/google";
 import GoogleTagManagerHead from "@/analytics/GtmHead";
 import GoogleTagManagerBoady from "@/analytics/GtmBody";
 import GoogleAnalytics from "@/analytics/GTag";
 import ChilddLayout from "./childlayout";
+
+const josefin = Josefin_Sans({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700"] });
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
 
 export default function RootLayout({
   children,
@@ -38,7 +42,7 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
 
-      <body className="antialiased flex flex-col min-h-screen">
+      <body className={`antialiased flex flex-col min-h-screen ${josefin.className} ${openSans.className}`}>
         <GoogleTagManagerBoady />
         <ChilddLayout>
           {children}
