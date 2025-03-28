@@ -94,6 +94,10 @@
   --ring: #f8f8f8;
 }
 
+body {
+  font-family: "Josefin Sans", "Open Sans", sans-serif !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

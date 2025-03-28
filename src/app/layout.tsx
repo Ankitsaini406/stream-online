@@ -42,7 +42,7 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
 
-      <body className={`antialiased flex flex-col min-h-screen ${josefin.className} ${openSans.className}`}>
+      <body className={`flex flex-col min-h-screen ${josefin.className} ${openSans.className}`}>
         <GoogleTagManagerBoady />
         <ChilddLayout>
           {children}
