@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       "image.tmdb.org",
+      "images.unsplash.com",
     ],
   },
   env: {
