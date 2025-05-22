@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { MenuIcon, X } from "lucide-react";
 
 export default function Header() {
-    const [headerOpen, setHeaderOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const menuItems = [
@@ -22,11 +21,10 @@ export default function Header() {
             <motion.div
                 className="fixed w-full top-0 z-50 flex flex-col items-center"
                 initial={false}
-                animate={{ y: headerOpen ? 0 : -100 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
             >
                 <AnimatePresence>
-                    {headerOpen && (
                         <motion.header
                             className="w-full z-50 bg-gradient-to-b from-background/90 to-background/70 backdrop-blur-lg shadow-lg relative border-b border-primary"
                             initial={{ y: -100, opacity: 0 }}
@@ -99,12 +97,11 @@ export default function Header() {
                                 )}
                             </AnimatePresence>
                         </motion.header>
-                    )}
                 </AnimatePresence>
             </motion.div>
 
             {/* Toggle Button for Header */}
-            <motion.div
+            {/* <motion.div
                 className="fixed top-0 left-1/2 transform -translate-x-1/2 z-20"
                 initial={{ y: -50 }}
                 animate={{ y: headerOpen ? 68 : 0 }}
@@ -116,7 +113,7 @@ export default function Header() {
                 >
                     <MenuIcon className="hover:text-foreground" size={20} />
                 </Button>
-            </motion.div>
+            </motion.div> */}
         </>
     );
 }
